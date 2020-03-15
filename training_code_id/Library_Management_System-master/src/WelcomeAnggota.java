@@ -14,6 +14,7 @@ public class WelcomeAnggota extends javax.swing.JFrame {
      * Creates new form WelcomeAnggota
      */
     public WelcomeAnggota() {
+        super("Welcome to Library");
         initComponents();
     }
 
