@@ -20,42 +20,64 @@ public class NusaSort {
     public static void main(String[] args) {
         // TODO code application logic here
         Books nusaSort = new Books();
+        
         ArrayList<buku> selectSort = new ArrayList<buku>();
-        ArrayList<buku> bubbleSort = new ArrayList<buku>();
-        ArrayList<buku> insertSort = new ArrayList<buku>();
-        ArrayList<buku> reverseSort = new ArrayList<buku>();
-        
-        
-        System.out.println("================================");
-        System.out.println("Selection Sort ascending by price");
-        System.out.println("Name & Price");
-        selectSort = nusaSort.doSelectionSort();
+        System.out.println("=========================");
+        System.out.println("SelectionSort by Price");
+        System.out.println("=========================");
+        selectSort = nusaSort.doSelectionSort(nusaSort.getDataList(), "Price");
         for (int i=0; i<selectSort.size(); i++) {
-            System.out.println(selectSort.get(i).getBookName()+": "+selectSort.get(i).getBookPrice());
+            System.out.println(" "+selectSort.get(i).getBookPrice()+" "+selectSort.get(i).getBookName()
+                    +" "+selectSort.get(i).getBookshelf()+" "+selectSort.get(i).getBookId());
         }
+                    System.out.println("");
+
         
-        System.out.println("================================");
-        System.out.println("Bubblesort by Name");
-        System.out.println("Name & Price");
-        bubbleSort = nusaSort.doBubbleSort(true);
+        ArrayList<buku> bubbleSort = new ArrayList<buku>();
+        System.out.println("=========================");
+        System.out.println("BubbleSort by BookShelf");
+        System.out.println("=========================");
+        bubbleSort = nusaSort.doBubbleSort(nusaSort.getDataList(), "Bookshelf");
         for (int i=0;i<bubbleSort.size();i++){
-            System.out.println(bubbleSort.get(i).getBookName()+": "+bubbleSort.get(i).getBookPrice());
+            System.out.println(" "+bubbleSort.get(i).getBookshelf()+" "+bubbleSort.get(i).getBookName()
+                    +" "+bubbleSort.get(i).getBookPrice()+" "+bubbleSort.get(i).getBookId());
         }
+                    System.out.println("");
+
         
-        System.out.println("================================");
-        System.out.println("Insertion sort by Name");
-        System.out.println("Name & Price");
-        insertSort = nusaSort.DoInsertionSort();
+        ArrayList<buku> insertSort = new ArrayList<buku>();
+        System.out.println("=====================");
+        System.out.println("InsertionSort by Name");
+        System.out.println("=====================");
+        insertSort = nusaSort.doInsertionSort(nusaSort.getDataList(), "name");
         for (int i=0;i<insertSort.size();i++){
-            System.out.println(insertSort.get(i).getBookName()+": "+insertSort.get(i).getBookPrice());
+           System.out.println(" "+insertSort.get(i).getBookName()+" "+insertSort.get(i).getBookPrice()
+                    +" "+insertSort.get(i).getBookshelf()+" "+insertSort.get(i).getBookId());
         }
+                    System.out.println("");
+                    
+
+        System.out.println("=====================");
+        System.out.println("ReverseSort with descending BooksID");
+        System.out.println("=====================");
+        ArrayList<buku> ReverseSort = new ArrayList<buku>();
+        ReverseSort = nusaSort.doReverseSort();
+        for (int i=0; i<ReverseSort.size(); i++) {
+            System.out.println(" "+ ReverseSort.get(i).getBookId()+" "+ ReverseSort.get(i).getBookName()
+                    +" "+ ReverseSort.get(i).getBookPrice()+" "+ ReverseSort.get(i).getBookshelf());
+        }
+        System.out.println("");
         
-        System.out.println("===============================");
-        System.out.println("Reverse by Price");
-        System.out.println("Name & Price");
-        reverseSort = nusaSort.doReverseSort();
-        for (int i=0; i<reverseSort.size(); i++) {
-            System.out.println(reverseSort.get(i).getBookName()+": "+reverseSort.get(i).getBookPrice());
+        ArrayList<buku> MergeSort = new ArrayList<buku>();
+        System.out.println("=====================");
+        System.out.println("MergeSort sort by NAME");
+        System.out.println("=====================");
+        
+        MergeSort = nusaSort.doMergeSort(nusaSort.getDataList());
+        
+        for (int i=0; i<MergeSort.size(); i++) {
+            System.out.println(" "+MergeSort.get(i).getBookName()+" "+ MergeSort.get(i).getBookPrice()
+                    +" "+ MergeSort.get(i).getBookshelf()+" "+ MergeSort.get(i).getBookId());
         }
     }
     

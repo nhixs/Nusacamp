@@ -15,6 +15,7 @@ public class buku {
     private String BookName;
     private String BookPublisher;
     private int BookPrice;
+    private String Bookshelf;
  
     public int getBookId() {
         return BookId;
@@ -45,6 +46,13 @@ public class buku {
  
     public void setBookPrice(int BookPrice) {
         this.BookPrice = BookPrice;
+    }
+    public String getBookshelf() {
+        return Bookshelf;
+    }
+ 
+    public void setBookshelf(String Bookshelf) {
+        this.Bookshelf = Bookshelf;
     }
 
    

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2020 at 04:40 PM
+-- Generation Time: Mar 18, 2020 at 07:34 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -107,30 +107,23 @@ INSERT INTO `newacc` (`Name`, `Username`, `Password`, `CPassword`, `SecurityQ`, 
 --
 
 CREATE TABLE IF NOT EXISTS `newbook` (
-  `Book_ID` smallint(6) DEFAULT NULL,
-  `Name` varchar(21) DEFAULT NULL,
-  `Edition` tinyint(4) DEFAULT NULL,
-  `Publisher` varchar(13) DEFAULT NULL,
-  `Price` smallint(6) DEFAULT NULL,
-  `Pages` smallint(6) DEFAULT NULL,
-  `Bookshelf` varchar(20) DEFAULT NULL
+  `BookId` int(8) NOT NULL,
+  `Name` varchar(25) NOT NULL,
+  `Price` int(12) NOT NULL,
+  `Bookshelf` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `newbook`
 --
 
-INSERT INTO `newbook` (`Book_ID`, `Name`, `Edition`, `Publisher`, `Price`, `Pages`, `Bookshelf`) VALUES
-(141, 'Java', 1, 'Oracle Ltd', 999, 1299, NULL),
-(280, 'OOPs', 5, 'Pranab', 896, 1233, NULL),
-(284, 'Mathematics 3', 3, 'Goyal Ltd', 499, 868, NULL),
-(386, 'Discrete Mathematics', 5, 'Arnab Rash', 965, 1988, NULL),
-(537, 'Digital Electronics', 2, 'Prabjat ', 788, 2122, NULL),
-(745, 'OS', 2, 'Windows', 1299, 1988, NULL),
-(785, 'CBNST', 3, 'Laxmi Pvt Ltd', 299, 568, NULL),
-(795, 'Data Structure With C', 7, 'Manish Goyal', 899, 598, NULL),
-(805, 'HTML', 3, 'W3', 958, 1322, NULL),
-(494, 'Drawing', 1, 'Art Inc', 999, 100, 'Art');
+INSERT INTO `newbook` (`BookId`, `Name`, `Price`, `Bookshelf`) VALUES
+(1, 'Java Tutorial', 55000, 'Computer'),
+(2, 'PHP Tutorial', 60000, 'Computer'),
+(3, 'Little Piece Of Heaven', 75000, 'Music'),
+(4, 'Before Crisis', 40000, 'Politics'),
+(5, 'Persona', 48000, 'Art'),
+(6, 'Arshen Lupin', 71000, 'Biography');
 
 -- --------------------------------------------------------
 
