@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import nusaSearch.buku;
 
 /**
@@ -27,6 +28,9 @@ public class SequenceSearch {
             while (rs.next()) {
                 buku   bk = new buku();
                 bk.setBookName(rs.getString("Name"));
+                bk.setBookId(rs.getInt("Book_ID"));
+                bk.setBookPrice(rs.getInt("Price"));
+                bk.setBookPublisher(rs.getString("Publisher"));
                 listBuku.add(bk);
             }
 
@@ -41,37 +45,35 @@ public class SequenceSearch {
 {  //method implementasi Algoritma Sequential
             int n=0;
             boolean ketemu=false;
-            
+System.out.println("Data Yang ditemukan: ");
+System.out.println("====================================");           
 
 for(int i=n;i<listBuku.size();i++)
 {
             if (listBuku.get(i).getBookName().toUpperCase().toLowerCase().startsWith(ItemSearch)){
-                        ketemu=true;
-                        String buku;
-                        buku = listBuku.get(i).getBookName();
-                        System.out.println(buku);
+               System.out.println(listBuku.get(i).getBookId()
+                       +" :"+listBuku.get(i).getBookName()
+                       +" :"+listBuku.get(i).getBookPublisher()
+                       +" :"+listBuku.get(i).getBookshelf()
+                       +" :"+listBuku.get(i).getBookPrice());
                                                 }
-           if(listBuku.get(i).getBookName().toUpperCase().toLowerCase().endsWith(ItemSearch)){
-               ketemu=true;
-                        String buku;
-                        buku = listBuku.get(i).getBookName();
-                        System.out.println(buku);
+            else if(listBuku.get(i).getBookName().toUpperCase().toLowerCase().endsWith(ItemSearch)){
+               System.out.println(listBuku.get(i).getBookId()
+                       +" :"+listBuku.get(i).getBookName()
+                       +" :"+listBuku.get(i).getBookPublisher()
+                       +" :"+listBuku.get(i).getBookshelf()
+                       +" :"+listBuku.get(i).getBookPrice());
         }
 } 
 
-if (ketemu==true)
-            {
-            System.out.println("Data Ada Di Index Ke "+n);
-            }
-else
-            {
-            System.out.println("Data Tidak Ditemukan");
-            }
+
 }
       public static void main(String[] args)
 {
+    Scanner input = new Scanner(System.in);
            SequenceSearch s = new SequenceSearch();
-           String ItemSearch = "va";
+           System.out.println("Masukan judul yang ingin dicari");
+           String ItemSearch = input.nextLine(); // masukan judul yang ingin dicari
             s.getDataList();//untuk mengisi ArrayList dengan Data
            s.Search(ItemSearch);// untuk melakukan pencarian String ItemList
 }
