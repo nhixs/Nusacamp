@@ -25,5 +25,9 @@ public class javaconnect {
             JOptionPane.showMessageDialog(null, "koneksi gagal "+e.getMessage());
         }
     }
+
+    void ConnerDb() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 

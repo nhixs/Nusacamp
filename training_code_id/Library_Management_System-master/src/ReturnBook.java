@@ -175,7 +175,6 @@ Statement pst;
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Name");
 
-        jButton1.setIcon(new javax.swing.ImageIcon("E:\\Software\\Languages\\Jar Files\\Icons\\SEO-icon-1.png")); // NOI18N
         jButton1.setText("Search");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -246,13 +245,14 @@ Statement pst;
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
+        jDateChooser1.setDateFormatString("yyyy-MM-dd");
+
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Return Date");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("Issue Date");
 
-        jButton2.setIcon(new javax.swing.ImageIcon("E:\\Software\\Languages\\Jar Files\\Icons\\Distributor-report-icon-1.png")); // NOI18N
         jButton2.setText("Return");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,7 +260,6 @@ Statement pst;
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("E:\\Software\\Languages\\Jar Files\\Icons\\User-Interface-Logout-icon-1.png")); // NOI18N
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,7 +318,7 @@ Statement pst;
                 .addGap(38, 38, 38))
         );
 
-        setSize(new java.awt.Dimension(736, 488));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -362,6 +361,32 @@ Statement pst;
           pst.setString(15, ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
           pst.execute();
           JOptionPane.showMessageDialog(null, "Book Returned");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public void hitungDenda(){
+        String sql = "select id, datediff(ReturnDate,IssueDate) as selisih from returnbook order by id desc limit 1";
+        try{
+            PreparedStatement pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+            if(rs.next()){
+                int selisih=rs.getInt("selisih");
+                String id=rs.getString("id");
+                if(selisih > 7){
+                    int denda = (selisih - 7) * 1000;
+                String sql2 = "update returnbook set Charge = '"+denda+"' where id = '"+id+"'";
+                PreparedStatement pst2=conn.prepareStatement(sql2);
+                pst2.execute();
+                JOptionPane.showMessageDialog(null, "Late return! check statistics to see charge.");
+                }else{
+                    JOptionPane.showMessageDialog(null, "No charge");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No Returned Book");
+            }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -422,7 +447,8 @@ Statement pst;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         ReturnUpdate();
-        Delete();    
+        Delete();
+        hitungDenda();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

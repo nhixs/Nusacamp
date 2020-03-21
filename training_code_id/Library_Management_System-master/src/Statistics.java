@@ -116,7 +116,6 @@ Statement pst;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon("E:\\Software\\Languages\\Jar Files\\Icons\\User-Interface-Logout-icon-1.png")); // NOI18N
         jButton1.setText("Back");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +187,7 @@ Statement pst;
                 .addGap(338, 338, 338))
         );
 
-        setSize(new java.awt.Dimension(704, 642));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -222,7 +221,7 @@ Statement pst;
     
     public void jTable2(){
        try{
-         String sql="select Student_ID,Name,Branch,Course,Book_ID,BName,ReturnDate from ReturnBook";
+         String sql="select Student_ID,Name,Branch,Course,Book_ID,BName,ReturnDate,Charge from ReturnBook";
          PreparedStatement pst=conn.prepareStatement(sql);
          rs=pst.executeQuery();
          jTable2.setModel(DbUtils.resultSetToTableModel(rs));
