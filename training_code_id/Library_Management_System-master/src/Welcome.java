@@ -17,7 +17,7 @@ public class Welcome extends javax.swing.JFrame {
      * Creates new form Welcome
      */
     public Welcome() {
-        super("Welcom - Library Management System");
+        super("Welcome - Library Management System");
         initComponents();
     }
 

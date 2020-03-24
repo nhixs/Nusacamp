@@ -23,4 +23,7 @@
      -You Can Search Any Book and student Detail.
 8.Devloper
      -You Can See my Comtact Detail.
-      (If you have any Query, I will happy to Help you)
+9.New Bookshelf
+     -You Can Add your new book on new bookshelf
+10.Skripsi
+     -You Can Add your Skripsi
