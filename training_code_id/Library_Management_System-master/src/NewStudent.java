@@ -8,8 +8,11 @@
  *
  * @author Bagus,Mentari,Solihin
  */
+import java.awt.Color;
 import java.sql.*;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 public class NewStudent extends javax.swing.JFrame {
 
@@ -75,11 +78,20 @@ public class NewStudent extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Father Name");
+        jLabel3.setText("Email");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Course");
+
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,7 +221,9 @@ public class NewStudent extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String sql="Insert into NwStudent(Student_ID,Name,F_Name,Course,Branch,Year,Semester) values (?,?,?,?,?,?,?)";
+        String sql="Insert into NwStudent(Student_ID,Name,Email,Course,Branch,Year,Semester) values (?,?,?,?,?,?,?)";
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
         try{
            PreparedStatement pst=conn.prepareStatement(sql);
            pst.setString(1, jTextField1.getText());
@@ -219,13 +233,36 @@ public class NewStudent extends javax.swing.JFrame {
            pst.setString(5, jTextField5.getText());
            pst.setString(6, (String) jComboBox1.getSelectedItem());
            pst.setString(7, (String) jComboBox3.getSelectedItem());
-           pst.execute();
-           JOptionPane.showMessageDialog(null, "New Student Registered");
+           Matcher matcher = pattern.matcher((CharSequence)jTextField3.getText());
+           if(!matcher.matches()){
+              JOptionPane.showMessageDialog(null, "Format Email Salah"); 
+              jTextField3.setBackground(Color.red);
+           }else{
+              pst.execute();
+           JOptionPane.showMessageDialog(null, "New Student Registered"); 
+           }
+           
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         } 
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        // TODO add your handling code here:
+        jTextField3.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        // TODO add your handling code here:
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher((CharSequence)jTextField3.getText());
+        if(!matcher.matches()){
+              JOptionPane.showMessageDialog(null, "Format Email Salah"); 
+              jTextField3.setBackground(Color.red);
+           }
+    }//GEN-LAST:event_jTextField3FocusLost
 
     public void Random(){
      Random rd=new Random();

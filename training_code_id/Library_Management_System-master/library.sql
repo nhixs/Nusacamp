@@ -1,22 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
--- https://www.phpmyadmin.net/
+-- version 4.2.11
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2020 at 04:17 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Mar 26, 2020 at 12:25 AM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `library`
@@ -28,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `account`
 --
 
-CREATE TABLE `account` (
+CREATE TABLE IF NOT EXISTS `account` (
   `name` varchar(30) NOT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(12) NOT NULL,
@@ -49,7 +47,7 @@ INSERT INTO `account` (`name`, `username`, `password`, `securityQuestion`, `Answ
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
+CREATE TABLE IF NOT EXISTS `admin` (
   `idAdmin` int(8) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(15) NOT NULL
@@ -68,7 +66,7 @@ INSERT INTO `admin` (`idAdmin`, `username`, `password`) VALUES
 -- Table structure for table `issuebook`
 --
 
-CREATE TABLE `issuebook` (
+CREATE TABLE IF NOT EXISTS `issuebook` (
   `Book_ID` smallint(6) DEFAULT NULL,
   `Name` varchar(21) DEFAULT NULL,
   `Edition` tinyint(4) DEFAULT NULL,
@@ -91,7 +89,7 @@ CREATE TABLE `issuebook` (
 -- Table structure for table `newacc`
 --
 
-CREATE TABLE `newacc` (
+CREATE TABLE IF NOT EXISTS `newacc` (
   `Name` varchar(25) DEFAULT NULL,
   `Username` varchar(25) DEFAULT NULL,
   `Password` varchar(25) DEFAULT NULL,
@@ -121,7 +119,7 @@ INSERT INTO `newacc` (`Name`, `Username`, `Password`, `CPassword`, `SecurityQ`, 
 -- Table structure for table `newbook`
 --
 
-CREATE TABLE `newbook` (
+CREATE TABLE IF NOT EXISTS `newbook` (
   `Book_ID` smallint(6) DEFAULT NULL,
   `Name` varchar(21) DEFAULT NULL,
   `Edition` tinyint(4) DEFAULT NULL,
@@ -145,7 +143,7 @@ INSERT INTO `newbook` (`Book_ID`, `Name`, `Edition`, `Publisher`, `Price`, `Page
 -- Table structure for table `newbookshelf`
 --
 
-CREATE TABLE `newbookshelf` (
+CREATE TABLE IF NOT EXISTS `newbookshelf` (
   `BookShelf_ID` int(11) NOT NULL,
   `Name` varchar(25) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
@@ -166,10 +164,10 @@ INSERT INTO `newbookshelf` (`BookShelf_ID`, `Name`) VALUES
 -- Table structure for table `nwstudent`
 --
 
-CREATE TABLE `nwstudent` (
+CREATE TABLE IF NOT EXISTS `nwstudent` (
   `Student_ID` smallint(6) DEFAULT NULL,
-  `Name` varchar(11) DEFAULT NULL,
-  `F_Name` varchar(10) DEFAULT NULL,
+  `Name` varchar(40) DEFAULT NULL,
+  `Email` varchar(35) DEFAULT NULL,
   `Course` varchar(6) DEFAULT NULL,
   `Branch` varchar(7) DEFAULT NULL,
   `Year` tinyint(4) DEFAULT NULL,
@@ -180,7 +178,7 @@ CREATE TABLE `nwstudent` (
 -- Dumping data for table `nwstudent`
 --
 
-INSERT INTO `nwstudent` (`Student_ID`, `Name`, `F_Name`, `Course`, `Branch`, `Year`, `Semester`) VALUES
+INSERT INTO `nwstudent` (`Student_ID`, `Name`, `Email`, `Course`, `Branch`, `Year`, `Semester`) VALUES
 (79, 'Pritam', 'P.Pattadar', 'B.Tech', 'Civil', 2, 3),
 (192, 'Satyajit', 'D.Sharma', 'B.SC', 'Math', 2, 3),
 (211, 'Hrishik', 'B.Debnath', 'B.SC', 'Physics', 2, 3),
@@ -189,7 +187,10 @@ INSERT INTO `nwstudent` (`Student_ID`, `Name`, `F_Name`, `Course`, `Branch`, `Ye
 (665, 'Ram', 'S.Mahato', 'B.Tech', 'CSE', 2, 3),
 (686, 'Souvik', 'B.Modak', 'B.Tech', 'CSE', 2, 3),
 (771, 'Anuj', 'A.K.Ray', 'B.Tech', 'CSE', 2, 3),
-(919, 'Avijit Mota', 'Pata Nai', 'B.Tech', 'ECE', 2, 3);
+(919, 'Avijit Mota', 'Pata Nai', 'B.Tech', 'ECE', 2, 3),
+(176, 'asdasd', 'asdasd', 'B.Tech', 'sadasd', 1, 1),
+(176, 'asdasd', 'hariyanto.aobagus@gmail.com', 'B.Tech', 'sadasd', 1, 1),
+(963, 'Indah Lestari', 'ss.teang@gmail.com', 'PHD', 'Law', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -197,7 +198,7 @@ INSERT INTO `nwstudent` (`Student_ID`, `Name`, `F_Name`, `Course`, `Branch`, `Ye
 -- Table structure for table `returnbook`
 --
 
-CREATE TABLE `returnbook` (
+CREATE TABLE IF NOT EXISTS `returnbook` (
   `ID` int(50) NOT NULL,
   `Student_ID` smallint(6) DEFAULT NULL,
   `Name` varchar(7) DEFAULT NULL,
@@ -223,7 +224,7 @@ CREATE TABLE `returnbook` (
 -- Table structure for table `skripsi`
 --
 
-CREATE TABLE `skripsi` (
+CREATE TABLE IF NOT EXISTS `skripsi` (
   `idSkripsi` int(8) NOT NULL,
   `SkripsiTittle` varchar(35) NOT NULL,
   `SkripsiMajor` varchar(20) NOT NULL,
@@ -251,20 +252,19 @@ INSERT INTO `skripsi` (`idSkripsi`, `SkripsiTittle`, `SkripsiMajor`, `Contributo
 -- Indexes for table `account`
 --
 ALTER TABLE `account`
-  ADD PRIMARY KEY (`username`) USING BTREE;
+ ADD PRIMARY KEY (`username`) USING BTREE;
 
 --
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`idAdmin`) USING BTREE;
+ ADD PRIMARY KEY (`idAdmin`) USING BTREE;
 
 --
 -- Indexes for table `skripsi`
 --
 ALTER TABLE `skripsi`
-  ADD PRIMARY KEY (`idSkripsi`) USING BTREE;
-COMMIT;
+ ADD PRIMARY KEY (`idSkripsi`) USING BTREE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
