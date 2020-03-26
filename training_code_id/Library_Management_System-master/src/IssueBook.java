@@ -94,7 +94,7 @@ Statement pst;
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Father Name");
+        jLabel3.setText("Email");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,7 +237,7 @@ Statement pst;
                     .addComponent(jTextField6)
                     .addComponent(jTextField10)
                     .addComponent(jTextField1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addContainerGap())
         );
@@ -315,7 +315,7 @@ Statement pst;
                                 .addComponent(jButton2)
                                 .addGap(38, 38, 38)
                                 .addComponent(jButton3)))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,7 +403,7 @@ Statement pst;
            if(rs.next()){
             String add1=rs.getString("Name");
             jTextField2.setText(add1);
-            String add2=rs.getString("F_Name");
+            String add2=rs.getString("Email");
             jTextField3.setText(add2);
             String add3=rs.getString("Course");
             jTextField11.setText(add3);
@@ -433,7 +433,7 @@ Statement pst;
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String sql="insert into IssueBook(Book_ID,Name,Edition,Publisher,Price,Pages,Student_ID,SName,Father,Course,Branch,Year,Semester,Date_Of_Issue) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql="insert into IssueBook(Book_ID,Name,Edition,Publisher,Price,Pages,Student_ID,SName,Email,Course,Branch,Year,Semester,Date_Of_Issue) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try{
           PreparedStatement pst=conn.prepareStatement(sql);
           pst.setString(1, jTextField1.getText());

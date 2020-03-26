@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2020 at 12:25 AM
+-- Generation Time: Mar 26, 2020 at 01:29 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -70,18 +70,25 @@ CREATE TABLE IF NOT EXISTS `issuebook` (
   `Book_ID` smallint(6) DEFAULT NULL,
   `Name` varchar(21) DEFAULT NULL,
   `Edition` tinyint(4) DEFAULT NULL,
-  `Publisher` varchar(12) DEFAULT NULL,
-  `Price` smallint(6) DEFAULT NULL,
+  `Publisher` varchar(35) DEFAULT NULL,
+  `Price` int(20) DEFAULT NULL,
   `Pages` smallint(6) DEFAULT NULL,
   `Student_ID` smallint(6) DEFAULT NULL,
   `SName` varchar(11) DEFAULT NULL,
-  `Father` varchar(10) DEFAULT NULL,
+  `Email` varchar(35) DEFAULT NULL,
   `Course` varchar(6) DEFAULT NULL,
   `Branch` varchar(10) DEFAULT NULL,
   `Year` tinyint(4) DEFAULT NULL,
   `Semester` tinyint(4) DEFAULT NULL,
   `Date_Of_Issue` varchar(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `issuebook`
+--
+
+INSERT INTO `issuebook` (`Book_ID`, `Name`, `Edition`, `Publisher`, `Price`, `Pages`, `Student_ID`, `SName`, `Email`, `Course`, `Branch`, `Year`, `Semester`, `Date_Of_Issue`) VALUES
+(227, 'Star of You', 1, 'Shan A Fitria', 85000, 150, 686, 'Souvik', 'B.Modak', 'B.Tech', 'CSE', 2, 3, '2020-03-02');
 
 -- --------------------------------------------------------
 
@@ -202,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `returnbook` (
   `ID` int(50) NOT NULL,
   `Student_ID` smallint(6) DEFAULT NULL,
   `Name` varchar(7) DEFAULT NULL,
-  `FName` varchar(9) DEFAULT NULL,
+  `Email` varchar(9) DEFAULT NULL,
   `Course` varchar(4) DEFAULT NULL,
   `Branch` varchar(10) DEFAULT NULL,
   `Year` tinyint(4) DEFAULT NULL,
