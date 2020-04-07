@@ -2,16 +2,16 @@ package com.mahasiswa.beans;
 
 public class Mhs {
 	
-	private int Student_ID;
+	private int id;
 	private String 	Name;
 	private String Email;
 	private String Course;
 	
-	public int getStudent_ID() {
-		return Student_ID;
+	public int getId() {
+		return id;
 	}
-	public void setStudent_ID(int student_ID) {
-		this.Student_ID = student_ID;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return Name;

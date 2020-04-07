@@ -43,9 +43,9 @@ public class MhsController {
     }  
     /* It displays object data into form for the given id.  
      * The @PathVariable puts URL data into variable.*/  
-    @RequestMapping(value="/editmhs/{Student_ID}")  
-    public String edit(@PathVariable int Student_ID, Model m){  
-        Mhs mhs=dao.getMhsById(Student_ID);  
+    @RequestMapping(value="/editmhs/{id}")  
+    public String edit(@PathVariable int id, Model m){  
+        Mhs mhs=dao.getMhsById(id);  
         m.addAttribute("command",mhs);
         return "mhseditform";  
     }  
@@ -56,9 +56,9 @@ public class MhsController {
         return "redirect:/viewmhs";  
     }  
     /* It deletes record for the given id in URL and redirects to /viewemp */  
-    @RequestMapping(value="/deletemhs/{Student_ID}",method = RequestMethod.GET)  
-    public String delete(@PathVariable int Student_ID){  
-        dao.delete(Student_ID);  
+    @RequestMapping(value="/deletemhs/{id}",method = RequestMethod.GET)  
+    public String delete(@PathVariable int id){  
+        dao.delete(id);  
         return "redirect:/viewmhs"; 
 	
     }

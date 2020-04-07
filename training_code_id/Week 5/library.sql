@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2020 at 06:17 AM
+-- Generation Time: Apr 07, 2020 at 08:27 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -172,29 +172,19 @@ INSERT INTO `newbookshelf` (`BookShelf_ID`, `Name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `nwstudent` (
-  `Student_ID` int(6) DEFAULT NULL,
-  `Name` varchar(40) DEFAULT NULL,
-  `Email` varchar(35) DEFAULT NULL,
-  `Course` varchar(6) DEFAULT NULL
+  `id` int(6) DEFAULT NULL,
+  `name` varchar(40) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `course` varchar(6) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `nwstudent`
 --
 
-INSERT INTO `nwstudent` (`Student_ID`, `Name`, `Email`, `Course`) VALUES
-(79, 'Pritam', 'P.Pattadar', 'B.Tech'),
-(192, 'Satyajit', 'D.Sharma', 'B.SC'),
-(211, 'Hrishik', 'B.Debnath', 'B.SC'),
-(446, 'Kaustav', 'K.Das', 'B.Tech'),
-(654, 'Abhijit', 'A.Das', 'B.Tech'),
-(665, 'Ram', 'S.Mahato', 'B.Tech'),
-(686, 'Souvik', 'B.Modak', 'B.Tech'),
-(771, 'Anuj', 'A.K.Ray', 'B.Tech'),
-(919, 'Avijit Mota', 'Pata Nai', 'B.Tech'),
-(176, 'asdasd', 'asdasd', 'B.Tech'),
-(176, 'asdasd', 'hariyanto.aobagus@gmail.com', 'B.Tech'),
-(963, 'Indah Lestari', 'ss.teang@gmail.com', 'PHD');
+INSERT INTO `nwstudent` (`id`, `name`, `email`, `course`) VALUES
+(963, 'Indah Lestari', 'ss.teang@gmail.com', 'FHUI'),
+(NULL, 'Bagus Hariyanto', 'hariyanto.aobagus@gmail.com', 'FTBSI');
 
 -- --------------------------------------------------------
 
