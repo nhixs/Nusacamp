@@ -1,5 +1,6 @@
 package com.mahasiswa.beans;
 
+//This is Bean or model or POJO(Plain Old Java Model)
 public class Mhs {
 	
 	private int id;

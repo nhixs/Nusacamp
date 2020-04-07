@@ -18,23 +18,19 @@ public class MhsController {
 	@Autowired
 	MhsDao dao;//will inject dao from xml file  
 	
-	/*It displays a form to input data, here "command" is a reserved request attribute 
-     *which is used to display object data into form 
-     */
+	
 	@RequestMapping("/mhsform")
 	public String showform(Model m) {
 		m.addAttribute("command", new Mhs());
 		return "mhsform";
 	}
-	/*It saves object into database. The @ModelAttribute puts request data 
-     *  into model object. You need to mention RequestMethod.POST method  
-     *  because default request is GET*/  
+	 
     @RequestMapping(value="/save",method = RequestMethod.POST)  
     public String save(@ModelAttribute("mhs") Mhs mhs){  
         dao.save(mhs);  
-        return "redirect:/viewmhs";//will redirect to viewemp request mapping  
+        return "redirect:/viewmhs";//will redirect to viewmhs request mapping  
     }  
-    /* It provides list of employees in model object */  
+    /* It provides list of Mahasiswas in model object */  
     @RequestMapping("/viewmhs")  
     public String viewmhs(Model m){  
         List<Mhs> list=dao.getMahsiswas();  
@@ -55,7 +51,7 @@ public class MhsController {
         dao.update(mhs);  
         return "redirect:/viewmhs";  
     }  
-    /* It deletes record for the given id in URL and redirects to /viewemp */  
+    /* It deletes record for the given id in URL and redirects to /viewmhs */  
     @RequestMapping(value="/deletemhs/{id}",method = RequestMethod.GET)  
     public String delete(@PathVariable int id){  
         dao.delete(id);  
