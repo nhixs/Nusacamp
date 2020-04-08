@@ -29,4 +29,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 <bean id="dao" class="com.mahasiswa.dao.MhsDao">
 <property name="template" ref="jt"></property>
 </bean>
+<bean id="daobook" class="com.mahasiswa.dao.BookDao">
+<property name="template" ref="jt"></property>
+</bean>
 </beans>
