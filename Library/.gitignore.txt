@@ -31,4 +31,4 @@ build/
 .vscode/
 
 # abaikan file POM
-*pom.xml
+pom.xml
